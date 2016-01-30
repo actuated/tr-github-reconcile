@@ -4,6 +4,7 @@
 # Script to update my github repositories, and to optionally pull any missing ones.
 # 1/22/2016 - Removed function previously used to call fnCheckRepo[s] for each repo, replaced with a for loop in fnCheckRepos and varRepoList
 # 1/24/2016 - Added two repos
+# 1/30/2016 - Added quiet option, good for setting up a cron job to do regular repo checks
 
 # Variable for the default root directory that contains downloaded tools.
 # Change this to your own existing or desired directory.
@@ -22,8 +23,9 @@ varRepoList="ike-trans nmap-grep pass-survey range-finder smb-anon-shares sslsca
 
 varPwd=$(pwd)
 varFlagCustomDir="N"
+varQuiet="N"
 varDateCreated="1/21/2016"
-varDateLastMod="1/24/2016"
+varDateLastMod="1/30/2016"
 
 # Function to show help/usage information
 function fnUsage {
@@ -47,6 +49,9 @@ function fnUsage {
   echo "              -Default can also be changed by modifying"
   echo "               varRootDir, near the beginning of the script."
   echo
+  echo "-q            -Quiet operation, assumes Y to any prompts."
+  echo "              -Good for using a cron job to check repos."
+  echo
   exit
 }
 
@@ -63,8 +68,12 @@ for varThisRepo in $varRepoList; do
   if [ ! -d "$varThisRepo" ]; then
     echo
     varFlagDownloadRepo="N"
-    read -p "$varThisRepo does not seem to exist. Clone with git? [Y/N] " varFlagDownloadRepo
-    varFlagDownloadRepo=$(echo "$varFlagDownloadRepo" | tr 'a-z' 'A-Z')
+    if [ "$varQuiet" = "N" ]; then
+      read -p "$varThisRepo does not seem to exist. Clone with git? [Y/N] " varFlagDownloadRepo
+      varFlagDownloadRepo=$(echo "$varFlagDownloadRepo" | tr 'a-z' 'A-Z')
+    else
+      varFlagDownloadRepo="Y"
+    fi
     if [ "$varFlagDownloadRepo" = "Y" ]; then
       git clone "$varMyGitUrlRoot$varThisRepo"
     fi
@@ -77,9 +86,13 @@ for varThisRepo in $varRepoList; do
     else
       echo
       varFlagGitInit="N"
-      echo "$varThisRepo exists, but does not appear to be git initialized."
-      read -p "Initialize with git? [Y/N] " varFlagGitInit
-      varFlagGitInit=$(echo "$varFlagGitInit" | tr 'a-z' 'A-Z')
+      if [ "$varQuiet" = "N" ]; then
+        echo "$varThisRepo exists, but does not appear to be git initialized."
+        read -p "Initialize with git? [Y/N] " varFlagGitInit
+        varFlagGitInit=$(echo "$varFlagGitInit" | tr 'a-z' 'A-Z')
+      else
+        varFlagGitInit="Y"
+      fi
       if [ "$varFlagGitInit" = "Y" ]; then
         git init
         git remote add origin "$varMyGitUrlRoot$varThisRepo.git"
@@ -108,8 +121,13 @@ function fnCheckRootDir {
 
   if [ ! -e "$varRootDir" ]; then
     echo
-    read -p "$varRootDir does not exist. Create? [Y/N] " varFlagCreateDir
-    varFlagCreateDir=$(echo "$varFlagCreateDir" | tr 'a-z' 'A-Z')
+    varFlagCreateDir="N"
+    if [ "$varQuiet" = "N" ]; then
+      read -p "$varRootDir does not exist. Create? [Y/N] " varFlagCreateDir
+      varFlagCreateDir=$(echo "$varFlagCreateDir" | tr 'a-z' 'A-Z')
+    else
+      varFlagCreateDir="Y"
+    fi
     if [ "$varFlagCreateDir" = "Y" ]; then
       mkdir "$varRootDir"
     else
@@ -136,9 +154,11 @@ while [ "$1" != "" ]; do
          varRootDir="$1"
          varFlagCustomDir="Y"
          ;;
+    -q ) varQuiet="Y"
     -h ) fnUsage
          ;;
     * )  fnUsage
+         ;;
   esac
   shift
 done
