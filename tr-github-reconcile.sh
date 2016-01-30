@@ -155,6 +155,7 @@ while [ "$1" != "" ]; do
          varFlagCustomDir="Y"
          ;;
     -q ) varQuiet="Y"
+         ;;
     -h ) fnUsage
          ;;
     * )  fnUsage
