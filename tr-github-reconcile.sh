@@ -18,7 +18,7 @@ varRootDir="/ted/my-scripts/github/"
 # 1. Change the variable below to use your github account URL (include the trailing /):
 varMyGitUrlRoot="https://github.com/actuated/"
 # 2. List your repos in this variable, which fnCheckRepos will use in a for loop.
-varRepoList="ike-trans nmap-grep pass-survey range-finder smb-anon-shares sslscanalyzer soc-eng-batches tr-github-reconcile user-parse"
+varRepoList="ike-trans nmap-grep nmap-script-parsers pass-survey range-finder smb-anon-shares sslscanalyzer soc-eng-batches tr-github-reconcile user-parse"
 
 
 varPwd=$(pwd)
