@@ -5,6 +5,7 @@
 # 1/22/2016 - Removed function previously used to call fnCheckRepo[s] for each repo, replaced with a for loop in fnCheckRepos and varRepoList
 # 1/24/2016 - Added two repos
 # 1/30/2016 - Added quiet option, good for setting up a cron job to do regular repo checks
+# 9/22/2016 - Added nmap-script-parsers and login-loop
 
 # Variable for the default root directory that contains downloaded tools.
 # Change this to your own existing or desired directory.
@@ -18,7 +19,7 @@ varRootDir="/ted/my-scripts/github/"
 # 1. Change the variable below to use your github account URL (include the trailing /):
 varMyGitUrlRoot="https://github.com/actuated/"
 # 2. List your repos in this variable, which fnCheckRepos will use in a for loop.
-varRepoList="ike-trans nmap-grep nmap-script-parsers pass-survey range-finder smb-anon-shares sslscanalyzer soc-eng-batches tr-github-reconcile user-parse"
+varRepoList="ike-trans login-loop nmap-grep nmap-script-parsers pass-survey range-finder smb-anon-shares sslscanalyzer soc-eng-batches tr-github-reconcile user-parse"
 
 
 varPwd=$(pwd)
