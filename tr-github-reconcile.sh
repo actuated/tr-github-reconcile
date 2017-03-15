@@ -8,6 +8,7 @@
 # 9/22/2016 - Added nmap-script-parsers and login-loop
 # 12/21/2016 - Added teradata-login and rogue-robin
 # 2/25/2017 - Added brute-probe
+# 3/14/2017 - Added SiteSurvey
 
 # Variable for the default root directory that contains downloaded tools.
 # Change this to your own existing or desired directory.
@@ -21,14 +22,14 @@ varRootDir="/tr/my-scripts/github/"
 # 1. Change the variable below to use your github account URL (include the trailing /):
 varMyGitUrlRoot="https://github.com/actuated/"
 # 2. List your repos in this variable, which fnCheckRepos will use in a for loop.
-varRepoList="brute-probe ike-trans login-loop nmap-grep nmap-script-parsers pass-survey range-finder rogue-robin smb-anon-shares sslscanalyzer soc-eng-batches teradata-login tr-github-reconcile user-parse"
+varRepoList="brute-probe ike-trans login-loop nmap-grep nmap-script-parsers pass-survey range-finder rogue-robin SiteSurvey smb-anon-shares sslscanalyzer soc-eng-batches teradata-login tr-github-reconcile user-parse"
 
 
 varPwd=$(pwd)
 varFlagCustomDir="N"
 varQuiet="N"
 varDateCreated="1/21/2016"
-varDateLastMod="2/25/2017"
+varDateLastMod="3/14/2017"
 
 # Function to show help/usage information
 function fnUsage {
