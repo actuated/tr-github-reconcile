@@ -10,27 +10,28 @@
 # 2/25/2017 - Added brute-probe
 # 3/14/2017 - Added SiteSurvey
 # 9/12/2017 - Added user-enum-demo-pages
+# 10/9/2017 - Added msf-exploit-loop and runas_system, changed varRootDir for my personal use
 
 # Variable for the default root directory that contains downloaded tools.
 # Change this to your own existing or desired directory.
 # You can also use -d [path] to specify or create a directory during script execution.
 # The script checks to see if this directory exists, offers to create it if not, and cancels if you choose not to.
 # The script will check in this directory for subdirs for each repo, offer to clone them if they are missing, initialize them if .git does not exist, or update they are there and initialized.
-varRootDir="/tr/my-scripts/github/"
+varRootDir="/tr/github/"
 
 
 # Are you a github user who wants to customize this for your own account and repos?
 # 1. Change the variable below to use your github account URL (include the trailing /):
 varMyGitUrlRoot="https://github.com/actuated/"
 # 2. List your repos in this variable, which fnCheckRepos will use in a for loop.
-varRepoList="brute-probe ike-trans login-loop nmap-grep nmap-script-parsers pass-survey range-finder rogue-robin SiteSurvey smb-anon-shares sslscanalyzer soc-eng-batches teradata-login tr-github-reconcile user-enum-demo-pages user-parse"
+varRepoList="brute-probe ike-trans login-loop msf-exploit-loop nmap-grep nmap-script-parsers pass-survey range-finder rogue-robin runas_system SiteSurvey smb-anon-shares sslscanalyzer soc-eng-batches teradata-login tr-github-reconcile user-enum-demo-pages user-parse"
 
 
 varPwd=$(pwd)
 varFlagCustomDir="N"
 varQuiet="N"
 varDateCreated="1/21/2016"
-varDateLastMod="9/12/2017"
+varDateLastMod="10/9/2017"
 
 # Function to show help/usage information
 function fnUsage {
