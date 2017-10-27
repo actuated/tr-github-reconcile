@@ -11,6 +11,7 @@
 # 3/14/2017 - Added SiteSurvey
 # 9/12/2017 - Added user-enum-demo-pages
 # 10/9/2017 - Added msf-exploit-loop and runas_system, changed varRootDir for my personal use
+# 10/27/2017 - Added check-smb-signing
 
 # Variable for the default root directory that contains downloaded tools.
 # Change this to your own existing or desired directory.
@@ -24,14 +25,14 @@ varRootDir="/tr/github/"
 # 1. Change the variable below to use your github account URL (include the trailing /):
 varMyGitUrlRoot="https://github.com/actuated/"
 # 2. List your repos in this variable, which fnCheckRepos will use in a for loop.
-varRepoList="brute-probe ike-trans login-loop msf-exploit-loop nmap-grep nmap-script-parsers pass-survey range-finder rogue-robin runas_system SiteSurvey smb-anon-shares sslscanalyzer soc-eng-batches teradata-login tr-github-reconcile user-enum-demo-pages user-parse"
+varRepoList="brute-probe check-smb-signing ike-trans login-loop msf-exploit-loop nmap-grep nmap-script-parsers pass-survey range-finder rogue-robin runas_system SiteSurvey smb-anon-shares sslscanalyzer soc-eng-batches teradata-login tr-github-reconcile user-enum-demo-pages user-parse"
 
 
 varPwd=$(pwd)
 varFlagCustomDir="N"
 varQuiet="N"
 varDateCreated="1/21/2016"
-varDateLastMod="10/9/2017"
+varDateLastMod="10/27/2017"
 
 # Function to show help/usage information
 function fnUsage {
