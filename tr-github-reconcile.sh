@@ -14,6 +14,7 @@
 # 10/27/2017 - Added check-smb-signing
 # 11/04/2017 - Added find-reused-ntds-hashes
 # 3/24/2018 - Added cisco-config-check
+# 10/12/2018 - Added -i option to limit repo list to tools useful for internal pentests
 
 # Variable for the default root directory that contains downloaded tools.
 # Change this to your own existing or desired directory.
@@ -28,13 +29,14 @@ varRootDir="/tr/github/"
 varMyGitUrlRoot="https://github.com/actuated/"
 # 2. List your repos in this variable, which fnCheckRepos will use in a for loop.
 varRepoList="brute-probe check-smb-signing cisco-config-check find-reused-ntds-hashes ike-trans login-loop msf-exploit-loop nmap-grep nmap-script-parsers pass-survey range-finder rogue-robin runas_system SiteSurvey smb-anon-shares sslscanalyzer soc-eng-batches teradata-login tr-github-reconcile user-enum-demo-pages user-parse"
+# To specify repo list when -i option is used, search for the comment "Check for options."
 
 
 varPwd=$(pwd)
 varFlagCustomDir="N"
 varQuiet="N"
 varDateCreated="1/21/2016"
-varDateLastMod="3/24/2018"
+varDateLastMod="10/12/2018"
 
 # Function to show help/usage information
 function fnUsage {
@@ -60,6 +62,9 @@ function fnUsage {
   echo
   echo "-q            -Quiet operation, assumes Y to any prompts."
   echo "              -Good for using a cron job to check repos."
+  echo
+  echo "-i            -Personal option to limit repos to those that"
+  echo "               are useful for internal pentests."
   echo
   exit
 }
@@ -164,6 +169,8 @@ while [ "$1" != "" ]; do
          varFlagCustomDir="Y"
          ;;
     -q ) varQuiet="Y"
+         ;;
+    -i ) varRepoList="check-smb-signing cisco-config-check find-reused-ntds-hashes login-loop msf-exploit-loop nmap-grep nmap-script-parsers pass-survey range-finder runas_system smb-anon-shares sslscanalyzer soc-eng-batches tr-github-reconcile user-parse"
          ;;
     -h ) fnUsage
          ;;
