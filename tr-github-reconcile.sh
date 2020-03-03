@@ -18,6 +18,7 @@
 # 1/8/2019 - Added nse-parse
 # 2/29/2020 - Added sleepscan
 # 3/1/2020 - Added wgexifloop
+# 3/2/2020 - Added exchange-find
 
 # Variable for the default root directory that contains downloaded tools.
 # Change this to your own existing or desired directory.
@@ -31,7 +32,7 @@ varRootDir="/tr/github/"
 # 1. Change the variable below to use your github account URL (include the trailing /):
 varMyGitUrlRoot="https://github.com/actuated/"
 # 2. List your repos in this variable, which fnCheckRepos will use in a for loop.
-varRepoList="brute-probe check-smb-signing cisco-config-check find-reused-ntds-hashes ike-trans login-loop msf-exploit-loop nmap-grep nmap-script-parsers nse-parse pass-survey range-finder rogue-robin runas_system sleepscan SiteSurvey smb-anon-shares sslscanalyzer soc-eng-batches teradata-login tr-github-reconcile user-enum-demo-pages user-parse wgexifloop"
+varRepoList="brute-probe check-smb-signing cisco-config-check exchange-find find-reused-ntds-hashes ike-trans login-loop msf-exploit-loop nmap-grep nmap-script-parsers nse-parse pass-survey range-finder rogue-robin runas_system sleepscan SiteSurvey smb-anon-shares sslscanalyzer soc-eng-batches teradata-login tr-github-reconcile user-enum-demo-pages user-parse wgexifloop"
 # To specify repo list when -i option is used, search for the comment "Check for options."
 
 
